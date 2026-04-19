@@ -1,0 +1,89 @@
+### 1. Crear cliente (OK)
+POST http://127.0.0.1:8000/clientes/
+Content-Type: application/json
+
+{
+  "nombre": "Juan Perez",
+  "email": "juan@gmail.com"
+}
+
+###
+
+### 2. Crear segundo cliente (OK)
+POST http://127.0.0.1:8000/clientes/
+Content-Type: application/json
+
+{
+  "nombre": "Maria Lopez",
+  "email": "maria@gmail.com"
+}
+
+###
+
+### 3. Error negocio (email duplicado)
+POST http://127.0.0.1:8000/clientes/
+Content-Type: application/json
+
+{
+  "nombre": "Pedro",
+  "email": "juan@gmail.com"
+}
+
+###
+
+### 4. Error validación (422)
+POST http://127.0.0.1:8000/clientes/
+Content-Type: application/json
+
+{
+  "nombre": "Jo",
+  "email": "correo_invalido"
+}
+
+###
+
+### 5. Listar todos los clientes
+GET http://127.0.0.1:8000/clientes/
+
+###
+
+### 6. Buscar cliente por ID (OK)
+GET http://127.0.0.1:8000/clientes/1
+
+###
+
+### 7. Buscar cliente por ID (404)
+GET http://127.0.0.1:8000/clientes/999
+
+###
+
+### 8. Filtrar por nombre
+GET http://127.0.0.1:8000/clientes/?nombre=juan
+
+###
+
+### 9. Filtrar por email
+GET http://127.0.0.1:8000/clientes/?email=gmail
+
+###
+
+### 10. Filtrar por nombre y email
+GET http://127.0.0.1:8000/clientes/?nombre=maria&email=gmail
+
+###
+
+### 11. Filtro sin resultados
+GET http://127.0.0.1:8000/clientes/?nombre=zzz
+
+###
+
+### 12. Nombre no permitido
+POST http://127.0.0.1:8000/clientes/
+Content-Type: application/json
+
+{
+  "nombre": "admin",
+  "email": "admin@gmail.com"
+}
+
+###
